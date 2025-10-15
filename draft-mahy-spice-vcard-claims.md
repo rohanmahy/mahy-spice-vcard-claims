@@ -9,8 +9,8 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "Security"
+workgroup: "Secure Patterns for Internet CrEdentials"
 keyword:
  - vCard
  - identity
@@ -21,12 +21,12 @@ keyword:
  - CBOR Web Token
  - claims
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Secure Patterns for Internet CrEdentials"
+  type: "Working Group"
+  mail: "spice@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/spice/"
+  github: "rohanmahy/mahy-spice-vcard-claims"
+  latest: "https://rohanmahy.github.io/mahy-spice-vcard-claims/draft-mahy-spice-vcard-claims.html"
 
 author:
  -
