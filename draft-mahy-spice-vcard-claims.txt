@@ -3,9 +3,9 @@
 
 
 WG Working Group                                                 R. Mahy
-Internet-Draft                            Rohan Mahy Consulting Services
-Intended status: Informational                              3 March 2025
-Expires: 4 September 2025
+Internet-Draft                                           15 October 2025
+Intended status: Informational                                          
+Expires: 18 April 2026
 
 
        Web Token Claim Registration Inspired by vCard Properties
@@ -13,7 +13,10 @@ Expires: 4 September 2025
 
 Abstract
 
-   TODO Abstract
+   A number of useful claims about humans are registered for use in JSON
+   Web Tokens and CBOR Web Tokens.  Another useful source of similar
+   information is in the vCard specification.  This document registers
+   those fields.
 
 About This Document
 
@@ -46,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 September 2025.
+   This Internet-Draft will expire on 18 April 2026.
 
 Copyright Notice
 
@@ -66,9 +69,16 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  New Claims
+   4.  vcard:geo
+   5.  vcard:impp
+   6.  vcard:title
+   7.  vcard:org
+   8.  Security Considerations
+   9.  IANA Considerations
+     9.1.  JWT Claims
+     9.2.  CWT Claims
+   10. Normative References
    Acknowledgments
    Author's Address
 
@@ -84,15 +94,112 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  New Claims
+
+4.  vcard:geo
+
+   The vCard GEO property contains a geographical coordinate.
+
+   "vcard:geo": "50.8449007, 4.3498171"
+
+   281: [50.8449007, 4.3498171]
+
+5.  vcard:impp
+
+   The vCard IMPP property contains an instant messaging address.  It is
+   a text string.
+
+6.  vcard:title
+
+   The vCard TITLE property contains the formal title of the (usually
+   human) subject, for example: "Principal Engineer"
+
+   It is a text string.
+
+7.  vcard:org
+
+   | vcard:geo | | | | 53.484715052499816, -2.238374047408401 | |
+   vcard:impp | | | | https://acme.co.uk/u/bob.jones | |
+   vcard:title | | | | Principal Engineer | | vcard:org | | | | "Acme
+   Widgets, Ltd." | logo_uri | vcard:logo | | | |
+   https://www.acme.co.uk/acme-logo-med.png | | vcard:member | | | |
+   Full Time Employees, Engineering, Security Alerts, Key Staff | |
+   vcard:fburl | | | | | # Free busy list vcard:caladuri: | | | | | #
+   Send scheduling requests here vcard:caluri: | | | | | # a calendar
+   address (ex: public calendar for a musician or public figure)
+
+   vcard:language
+
+   vcard:socialprofile
+
+   vcard:sound # pronunciation of name
+   vcard:phonetic:ipa  # IPA phonetic representation
+   vcard:phonetic:piny # Pinyin phonetic representation
+   vcard:phonetic:jyut # Jyutping phonetic representation
+
+   vcard:gramgender # grammatical gender
+   vcard:pronouns
+
+8.  Security Considerations
 
    TODO Security
 
-4.  IANA Considerations
+9.  IANA Considerations
 
-   This document has no IANA actions.
+9.1.  JWT Claims
 
-5.  Normative References
+   JWT already has
+
+   *  groups, roles, entitlements
+
+   *  title
+
+   *  place_of_birth
+
+   *  nationality
+
+   *  birth_*_name
+
+9.2.  CWT Claims
+
+   | vcard:geo | | | | 53.484715052499816, -2.238374047408401 | |
+   vcard:impp | | | | https://acme.co.uk/u/bob.jones | |
+   vcard:title | | | | Principal Engineer | | vcard:org | | | | "Acme
+   Widgets, Ltd." | logo_uri | vcard:logo | | | |
+   https://www.acme.co.uk/acme-logo-med.png | | vcard:member | | | |
+   Full Time Employees, Engineering, Security Alerts, Key Staff |
+
+   array
+
+       +=================+==+==+==+==+============================+
+       | vcard:fburl     |  |  |  |  | # Free busy list           |
+       +=================+==+==+==+==+============================+
+       | vcard:caladuri: |  |  |  |  | # Send scheduling requests |
+       |                 |  |  |  |  | here                       |
+       +-----------------+--+--+--+--+----------------------------+
+       | vcard:caluri:   |  |  |  |  | # a calendar address (ex:  |
+       |                 |  |  |  |  | public calendar for a      |
+       |                 |  |  |  |  | musician or public figure) |
+       +-----------------+--+--+--+--+----------------------------+
+
+                                 Table 1
+
+   vcard:lang (languages that may be used for contacting the entity
+   associated with the vCard)
+
+   vcard:socialprofile
+
+   vcard:sound # pronunciation of name
+   vcard:phonetic:ipa  # IPA phonetic representation
+   vcard:phonetic:piny # Pinyin phonetic representation
+   vcard:phonetic:jyut # Jyutping phonetic representation
+
+   vcard:gramgender # grammatical gender
+   vcard:pronouns
+
+   birthplace, deathplace, deathdate
+
+10.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -110,5 +217,4 @@ Acknowledgments
 Author's Address
 
    Rohan Mahy
-   Rohan Mahy Consulting Services
    Email: rohan.ietf@gmail.com
